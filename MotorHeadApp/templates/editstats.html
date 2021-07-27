@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Enter Stats
+{% endblock %}
+
+{% block content %}
+    <h3>Enter Stats</h3>
+    <form method="post">
+        {% csrf_token %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Base Stats</h5>
+                <p class="card-text">
+                <div class="form-row">
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.date|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.court|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.personal|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.training|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.equipment|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.meetings|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.accident|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.crime|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.patrol_coverage|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.call_out|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.other|as_crispy_field }}
+                    </div>
+                </div>
+
+                </p>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Base Stats</h5>
+                <p class="card-text">
+                <div class="form-row">
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.enforcement_stops|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.citations|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.mechanicals|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.OTS_Cites|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.complaint_areas|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.accident_reports|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.accident_sups|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.arrests|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.NAT|as_crispy_field }}
+                    </div>
+
+                </div>
+                </p>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="form-row">
+            <div class="form-group col-md-2 mb-2">
+                <button class="btn btn-primary">Update Record</button>
+            </div>
+
+        </div>
+    </form>
+{% endblock %}

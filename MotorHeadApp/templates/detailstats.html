@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3>Date: {{ stats.date }}</h3>
+    <table class="table table-bordered">
+    <tr>
+        <td>Court: {{ stats.court }}</td>
+        <td>Personal: {{ stats.personal }}</td>
+        <td>Training: {{ stats.training }}</td>
+        <td>Equipment: {{ stats.equipment }}</td>
+        <td>Meetings: {{ stats.meetings }}</td>
+    </tr>
+    </table>
+
+    <table class="table table-bordered">
+    <tr>
+      <td>Accident: {{ stats.accident }}</td>
+        <td>Crime: {{ stats.crime }}</td>
+        <td>Patrol Coverage: {{ stats.patrol_coverage }}</td>
+        <td>Call-Out: {{ stats.call_out }}</td>
+        <td>Other: {{ stats.other}}</td>
+    </tr>
+    </table>
+    <br>
+    <table class="table table-bordered">
+    <tr>
+        <td>Enfocement Stops: {{ stats.enforcement_stops }}</td>
+        <td>Citations: {{ stats.citations }}</td>
+        <td>Mechanicals: {{ stats.mechanicals }}</td>
+        <td>OTS_Cites: {{ stats.OTS_Cites }}</td>
+        <td>Complaint Areas: {{ stats.complaint_areas}}</td>
+    </tr>
+    </table>
+    <br>
+    <table class="table table-bordered">
+    <tr>
+        <td>Accident Reports: {{ stats.accident_reports }}</td>
+        <td>Accident Sups: {{ stats.accident_sups }}</td>
+        <td>Arrests: {{ stats.arrests }}</td>
+        <td>NAT: {{ stats.NAT }}</td>
+    </tr>
+    </table>
+    <a href="{% url 'editstats' stats.pk %}" class="btn btn-primary btn-lg active" role="button"
+       aria-pressed="true">Edit</a>
+
+
+
+
+{% endblock %}
