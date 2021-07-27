@@ -4,4 +4,20 @@
 {% endblock %}
 {% block content %}
     <h1>Home</h1>
+    <br>
+    <table class="table-borderless">
+    <tr>
+        <td class="p-4">
+          <a href="{% url 'enterstats' %}" class="btn btn-success" role="button"
+                   aria-pressed="true"><span>Enter Stats</span></a>
+        </td>
+
+        <td class="p-4">
+         <a href="{% url 'liststats' %}" class="btn btn-success" role="button"
+                   aria-pressed="true"><span>List Your Stats</span></a>
+        </td>
+
+
+    </tr>
+    </table>
 {% endblock %}
