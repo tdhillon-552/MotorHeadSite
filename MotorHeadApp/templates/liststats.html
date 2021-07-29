@@ -5,8 +5,32 @@
 {% endblock %}
 
 {% block head %}
-    <script src="{% static '/cal/tui-calendar.css' %}"></script>
-    <script src="{% static '/cal/tui-calendar.js' %}"></script>
+    <link href="{% static '/cal/main.css' %}" rel="stylesheet"/>
+    <script src="{% static '/cal/main.js' %}"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            let calendarEl = document.getElementById('calendar');
+            let calendar = new FullCalendar.Calendar(calendarEl, {
+                height: 650,
+                initialView: 'dayGridMonth',
+                events: [
+                    {% for stats in page_obj %}
+                     {
+                        title: 'Entry Completed', // a property!
+                        start: '{{stats.date|date:"Y-m-d"}}', // a property!
+                        end: '{{ stats.date }}', // a property! ** see important note below about 'end' **
+                        url: '{% url 'detailstats' stats.pk %}'
+                    },
+                    {% endfor %}
+
+                ]
+            });
+            calendar.render();
+        });
+
+    </script>
+
 {% endblock %}
 
 
@@ -43,23 +67,15 @@
         </span>
 
         {% if page_obj.has_next %}
-            <a class="btn btn-light "href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a class="btn btn-light " href="?page={{ page_obj.next_page_number }}">Next</a>
             <a class="btn btn-info" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
         {% endif %}
     </span>
-</div>
-    <br>
-    <br>
-    <div id="calendar" style="height: 800px;"></div>
+    </div>
+
+    <div id="calendar"></div>
 {% endblock %}
 
 {% block js %}
-
-<script>
-var calendar = new Calendar('#calendar', {
-  defaultView: 'month',
-  taskView: true,
-});
-</script>
 
 {% endblock %}
