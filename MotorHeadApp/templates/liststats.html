@@ -1,6 +1,12 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}
     List Stats
+{% endblock %}
+
+{% block head %}
+    <script src="{% static '/cal/tui-calendar.css' %}"></script>
+    <script src="{% static '/cal/tui-calendar.js' %}"></script>
 {% endblock %}
 
 
@@ -42,7 +48,18 @@
         {% endif %}
     </span>
 </div>
+    <br>
+    <br>
+    <div id="calendar" style="height: 800px;"></div>
+{% endblock %}
 
+{% block js %}
 
+<script>
+var calendar = new Calendar('#calendar', {
+  defaultView: 'month',
+  taskView: true,
+});
+</script>
 
 {% endblock %}
