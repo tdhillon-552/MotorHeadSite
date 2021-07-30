@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render
 
 # Create your views here.
@@ -7,6 +8,11 @@ from .models import Stats
 from .forms import StatsForm
 
 
+def motorhead_user_test(user):
+    return user.groups.filter(name__in=['motorhead_users'])
+
+
+@user_passes_test(motorhead_user_test)
 def home(request):
     return render(request, 'home.html')
 

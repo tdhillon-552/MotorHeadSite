@@ -1,0 +1,21 @@
+{% load static crispy_forms_tags %}
+<html>
+<body>
+<h2>Login</h2>
+    <br>
+    <h6>
+    Windows Username and Windows Password
+    </h6>
+  <form method="post">
+    {% csrf_token %}
+      <div class="row">
+          <div class="col align-self-end col-6">
+              {{ form|crispy }}
+          </div>
+      </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+</body>
+</html>
+
+

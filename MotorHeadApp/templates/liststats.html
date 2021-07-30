@@ -12,16 +12,15 @@
         document.addEventListener('DOMContentLoaded', function () {
             let calendarEl = document.getElementById('calendar');
             let calendar = new FullCalendar.Calendar(calendarEl, {
-                height: 650,
                 initialView: 'dayGridMonth',
                 events: [
                     {% for stats in page_obj %}
-                     {
-                        title: 'Entry Completed', // a property!
-                        start: '{{stats.date|date:"Y-m-d"}}', // a property!
-                        end: '{{ stats.date }}', // a property! ** see important note below about 'end' **
-                        url: '{% url 'detailstats' stats.pk %}'
-                    },
+                        {
+                            title: 'Entry Completed',
+                            start: '{{stats.date|date:"Y-m-d"}}',
+                            url: '{% url 'detailstats' stats.pk %}',
+
+                        },
                     {% endfor %}
 
                 ]
@@ -36,8 +35,11 @@
 
 
 {% block content %}
+    <br>
+        <div id="calendar"></div>
+
+    <br>
     <H2>Stats List</H2>
-    <h4> Current User: {{ user.username }} </h4>
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
@@ -72,8 +74,6 @@
         {% endif %}
     </span>
     </div>
-
-    <div id="calendar"></div>
 {% endblock %}
 
 {% block js %}
