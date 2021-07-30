@@ -7,7 +7,7 @@ from django.utils.timezone import now
 
 
 class Stats(models.Model):
-    date = models.DateField(default=now())
+    date = models.DateField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     court = models.FloatField(default=0)
     personal = models.FloatField(default=0)
