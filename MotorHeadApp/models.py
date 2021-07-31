@@ -1,13 +1,14 @@
+
+from django.utils.timezone import now
 from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
 from django.urls import reverse
-from django.utils.timezone import now
 
 
 class Stats(models.Model):
-    date = models.DateField(auto_now_add=True)
+    date = models.DateField(default=now(), blank=False)
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     court = models.FloatField(default=0)
     personal = models.FloatField(default=0)
