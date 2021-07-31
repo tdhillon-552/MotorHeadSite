@@ -2,7 +2,6 @@ from django.contrib import admin
 from .models import Profile
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
-from .models import Part107info
 
 
 from . models import DroneTable
@@ -30,8 +29,4 @@ class CustomUserAdmin(UserAdmin):
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
 
-
-@admin.register(Part107info)
-class DetectionTableAdmin(admin.ModelAdmin):
-    list_display = ("part107",)
 
