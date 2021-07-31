@@ -1,5 +1,8 @@
 {% load static crispy_forms_tags %}
 <html>
+<head>
+    <link href="{% static '/css/bootstrap-4.4.1.css' %}" rel="stylesheet">
+</head>
 <body>
 <h2>Login</h2>
     <br>
@@ -15,6 +18,11 @@
       </div>
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
+<script src="{% static '/js/jquery-3.4.1.min.js' %}"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{% static '/js/popper.min.js' %}"></script>
+<script src="{% static '/js/bootstrap-4.4.1.js' %}"></script>
+
 </body>
 </html>
 
