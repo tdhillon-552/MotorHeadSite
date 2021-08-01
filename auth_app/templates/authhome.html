@@ -1,4 +1,17 @@
+{% load system_tags %}
 <html>
-<h1>Auth home</h1>
-{{ user.first_name }}
+<h1>Auth Home</h1>
+<h4><i>Welcome {{ user.first_name }} {{ user.last_name }}</i></h4>
+<h3>Authorized Applications</h3>
+
+
+
+{% if user|has_group:"motorhead_users"%}
+<a href="/motorhead">MotorHead - Traffic Bureau Stat application</a>
+{% endif %}
+<br/>
+{% if user|has_group:"dronelog_users"%}
+<a href="/dronelog">DroneLog - Drone  Stat application</a>
+{% endif %}
+
 </html>

@@ -14,13 +14,13 @@ def motorhead_user_test(user):
 
 @user_passes_test(motorhead_user_test)
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'MotorHeadApp/home.html')
 
 
 class EnterStats(CreateView):
     model = Stats
     form_class = StatsForm
-    template_name = 'enterstats.html'
+    template_name = 'MotorHeadApp/enterstats.html'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -30,7 +30,7 @@ class EnterStats(CreateView):
 class ListStats(ListView):
     paginate_by = 5
     model = Stats
-    template_name = 'liststats.html'
+    template_name = 'MotorHeadApp/liststats.html'
     ordering = ['-date']
 
     def get_queryset(self):
@@ -39,12 +39,12 @@ class ListStats(ListView):
 
 class DetailStats(DetailView):
     model = Stats
-    template_name = 'detailstats.html'
+    template_name = 'MotorHeadApp/detailstats.html'
 
 
 class EditStats(UpdateView):
     model = Stats
     form_class = StatsForm
-    template_name = 'editstats.html'
+    template_name = 'MotorHeadApp/editstats.html'
 
 

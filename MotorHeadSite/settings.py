@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'MotorHeadApp',
     'DroneLogApp',
-
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -134,3 +133,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGIN_REDIRECT_URL = 'login_success'
+
+

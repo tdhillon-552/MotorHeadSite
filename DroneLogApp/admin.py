@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile
+from .models import *
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
@@ -7,10 +7,12 @@ from django.contrib.auth.models import User
 from . models import DroneTable
 
 admin.site.register(DroneTable)
+admin.site.register(ReasonTable)
+admin.site.register(MissionTable)
 
 
 class ProfileInline(admin.StackedInline):
-    model = Profile
+    model = DroneLogAttributes
     can_delete = False
     verbose_name = 'DroneLog Application Attributes'
     verbose_name_plural = 'test'
