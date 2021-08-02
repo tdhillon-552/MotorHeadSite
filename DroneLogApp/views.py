@@ -8,4 +8,4 @@ def drone_user_test(user):
 
 @user_passes_test(drone_user_test)
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'DroneLogApp/home.html')

@@ -14,3 +14,8 @@ class StatsForm(forms.ModelForm):
         widgets = {
             'date': DateInput()
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if self.instance and hasattr(self.instance, 'date'):
+            self.initial['date'] = datetime.datetime.now()

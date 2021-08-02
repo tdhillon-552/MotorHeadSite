@@ -8,7 +8,7 @@ from django.urls import reverse
 
 
 class Stats(models.Model):
-    date = models.DateField(default=now(), blank=False)
+    date = models.DateField(blank=False)
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     court = models.FloatField(default=0)
     personal = models.FloatField(default=0)

@@ -11,7 +11,7 @@ admin.site.register(ReasonTable)
 admin.site.register(MissionTable)
 
 
-class ProfileInline(admin.StackedInline):
+class InlineDroneAppAttributes(admin.StackedInline):
     model = DroneLogAttributes
     can_delete = False
     verbose_name = 'DroneLog Application Attributes'
@@ -19,16 +19,14 @@ class ProfileInline(admin.StackedInline):
     fk_name = 'user'
 
 
-class CustomUserAdmin(UserAdmin):
-    inlines = (ProfileInline,)
+class CustomDroneLogAdmin(UserAdmin):
+    inlines = (InlineDroneAppAttributes,)
 
     def get_inline_instances(self, request, obj=None):
         if not obj:
             return list()
-        return super(CustomUserAdmin, self).get_inline_instances(request, obj)
+        return super(CustomDroneLogAdmin, self).get_inline_instances(request, obj)
 
 
-admin.site.unregister(User)
-admin.site.register(User, CustomUserAdmin)
 
 
