@@ -44,6 +44,9 @@ class DroneLogAttributes(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     has_part107 = models.BooleanField(default=False)
 
+    class Meta:
+        verbose_name = 'DroneLogAttributes'
+
 
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):

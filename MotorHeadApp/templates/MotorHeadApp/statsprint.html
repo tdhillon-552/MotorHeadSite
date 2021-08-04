@@ -1,0 +1,60 @@
+<html>
+<body>
+{{ search_results.start_date }}
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Court</th>
+        <th>Personal</th>
+        <th>Training</th>
+        <th>Equipment</th>
+        <th>Meeting</th>
+        <th>Accident</th>
+        <th>Crime</th>
+        <th>Patrol Coverage</th>
+        <th>Call Out</th>
+        <th>Other</th>
+    </tr>
+    <tr>
+        <td>{{ search_results.court }}</td>
+        <td>{{ search_results.personal }}</td>
+        <td>{{ search_results.training }}</td>
+        <td>{{ search_results.equipment }}</td>
+        <td>{{ search_results.meetings }}</td>
+        <td>{{ search_results.accident }}</td>
+        <td>{{ search_results.crime }}</td>
+        <td>{{ search_results.patrol_coverage }}</td>
+        <td>{{ search_results.call_out }}</td>
+        <td>{{ search_results.other }}</td>
+    </tr>
+</table>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Enforcement Stops</th>
+        <th>Citations</th>
+        <th>Mechanicals</th>
+        <th>OTS Cites</th>
+        <th>Complaint Areas</th>
+        <th>Accident Reports</th>
+        <th>Accident Supps</th>
+        <th>Arrests</th>
+        <th>NAT</th>
+
+    </tr>
+    <tr>
+        <td>{{ search_results.enforcement_stops }}</td>
+        <td>{{ search_results.citations }}</td>
+        <td>{{ search_results.mechanicals }}</td>
+        <td>{{ search_results.OTS_Cites }}</td>
+        <td>{{ search_results.complaint_areas }}</td>
+        <td>{{ search_results.accident_reports }}</td>
+        <td>{{ search_results.accident_sups }}</td>
+        <td>{{ search_results.arrests }}</td>
+        <td>{{ search_results.NAT }}</td>
+
+    </tr>
+</table>
+</body>
+
+</html>
+
+

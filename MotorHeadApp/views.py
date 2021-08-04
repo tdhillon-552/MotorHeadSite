@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.views.generic import CreateView, ListView, DetailView, UpdateView
 
 from .models import Stats
-from .forms import StatsForm
+from .forms import StatsForm, UpdateStatsForm, SearchByMotor
 
 
 def motorhead_user_test(user):
@@ -44,7 +44,56 @@ class DetailStats(DetailView):
 
 class EditStats(UpdateView):
     model = Stats
-    form_class = StatsForm
+    form_class = UpdateStatsForm
     template_name = 'MotorHeadApp/editstats.html'
+
+
+def searchbymotor(request):
+
+    if request.POST:
+        form_data = SearchByMotor(request.POST)
+        if form_data.is_valid():
+            start_date = form_data.cleaned_data['start_date']
+            end_date = form_data.cleaned_data['end_date']
+            searched_motor = form_data.cleaned_data['motor']
+
+            request.session['pass_start_date_stats'] = start_date
+            request.session['pass_end_date_stats'] = end_date
+            request.session['pass_searched_motor_stats'] = request.POST.get('motor')
+
+            search_query = Stats.objects.filter(date__range=[start_date, end_date], user=searched_motor)
+            search_results = {
+                'court': sum(total.court for total in search_query),
+                'personal': sum(total.personal for total in search_query),
+                'training': sum(total.training for total in search_query),
+                'equipment': sum(total.equipment for total in search_query),
+                'meetings': sum(total.meetings for total in search_query),
+                'accident': sum(total.accident for total in search_query),
+                'crime': sum(total.crime for total in search_query),
+                'patrol_coverage': sum(total.patrol_coverage for total in search_query),
+                'call_out': sum(total.call_out for total in search_query),
+                'other': sum(total.other for total in search_query),
+                'enforcement_stops': sum(total.enforcement_stops for total in search_query),
+                'citations': sum(total.citations for total in search_query),
+                'mechanicals': sum(total.mechanicals for total in search_query),
+                'OTS_Cites': sum(total.OTS_Cites for total in search_query),
+                'complaint_areas': sum(total.complaint_areas for total in search_query),
+                'accident_reports': sum(total.accident_reports for total in search_query),
+                'accident_sups': sum(total.accident_sups for total in search_query),
+                'arrests': sum(total.arrests for total in search_query),
+                'NAT': sum(total.NAT for total in search_query),
+
+            }
+    else:
+        form_data = SearchByMotor()
+        search_results = None
+
+    content = {
+        'form_data': form_data,
+        'search_results': search_results,
+    }
+
+    return render(request, 'MotorHeadApp/searchbymotor.html', content)
+
 
 

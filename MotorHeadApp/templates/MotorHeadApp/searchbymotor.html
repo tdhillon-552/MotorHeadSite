@@ -1,0 +1,86 @@
+{% extends "MotorHeadApp/base.html" %}
+{% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Search Stats
+{% endblock %}
+
+{% block content %}
+    <form method="post"> {% csrf_token %}
+
+        <div class="form-row">
+            <div class="form-group col-md-2 mb-0">
+                {{ form_data.motor|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-2 mb-0">
+                {{ form_data.start_date|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-2 mb-0">
+                {{ form_data.end_date|as_crispy_field }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-2 mb-0">
+                <input type="submit" value="Submit" class="btn btn-primary"/>
+            </div>
+        </div>
+    </form>
+    <br/>
+
+    {% if form_data.has_changed %}
+        <table class="table table-bordered table-striped">
+        <tr>
+            <th>Court</th>
+            <th>Personal</th>
+            <th>Training</th>
+            <th>Equipment</th>
+            <th>Meeting</th>
+            <th>Accident</th>
+            <th>Crime</th>
+            <th>Patrol Coverage</th>
+            <th>Call Out</th>
+            <th>Other</th>
+        </tr>
+        <tr>
+            <td>{{ search_results.court }}</td>
+            <td>{{ search_results.personal }}</td>
+            <td>{{ search_results.training }}</td>
+            <td>{{ search_results.equipment }}</td>
+            <td>{{ search_results.meetings }}</td>
+            <td>{{ search_results.accident }}</td>
+            <td>{{ search_results.crime }}</td>
+            <td>{{ search_results.patrol_coverage }}</td>
+            <td>{{ search_results.call_out }}</td>
+            <td>{{ search_results.other }}</td>
+        </tr>
+        </table>
+        <table class="table table-bordered table-striped">
+        <tr>
+            <th>Enforcement Stops</th>
+            <th>Citations</th>
+            <th>Mechanicals</th>
+            <th>OTS Cites</th>
+            <th>Complaint Areas</th>
+            <th>Accident Reports</th>
+            <th>Accident Supps</th>
+            <th>Arrests</th>
+            <th>NAT</th>
+
+        </tr>
+        <tr>
+            <td>{{ search_results.enforcement_stops }}</td>
+            <td>{{ search_results.citations }}</td>
+            <td>{{ search_results.mechanicals }}</td>
+            <td>{{ search_results.OTS_Cites }}</td>
+            <td>{{ search_results.complaint_areas }}</td>
+            <td>{{ search_results.accident_reports }}</td>
+            <td>{{ search_results.accident_sups }}</td>
+            <td>{{ search_results.arrests }}</td>
+            <td>{{ search_results.NAT }}</td>
+
+        </tr>
+        </table>
+
+    {% endif %}
+{% endblock %}
