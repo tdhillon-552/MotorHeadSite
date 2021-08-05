@@ -41,3 +41,8 @@ class SearchByMotor(forms.Form):
     start_date = forms.CharField(label='Start Date', max_length=12, widget=DateInput())
     end_date = forms.CharField(label='End Date', max_length=12, widget=DateInput(), initial=datetime.date.today)
     motor = MyModelChoiceField(queryset=User.objects.filter(groups__name='motorhead_users'))
+
+
+class SearchTotalsForm(forms.Form):
+    start_date = forms.CharField(label='Start Date', max_length=12, widget=DateInput())
+    end_date = forms.CharField(label='End Date', max_length=12, widget=DateInput(), initial=datetime.date.today)

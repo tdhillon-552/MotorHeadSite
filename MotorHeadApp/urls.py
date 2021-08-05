@@ -11,4 +11,6 @@ urlpatterns = [
     path('edit/<int:pk>', EditStats.as_view(), name='editstats'),
     path('searchmotor', views.searchbymotor, name='searchbymotor'),
     path('searchmotor/print', printviews.statsprint, name='statsprint'),
+    path('searchtotals', views.searchtotals, name='searchtotals'),
+    path('searchtotals/print', printviews.totalsprint, name='totalsprint'),
 ]

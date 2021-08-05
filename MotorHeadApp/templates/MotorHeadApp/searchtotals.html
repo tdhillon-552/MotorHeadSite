@@ -11,13 +11,12 @@
 
         <div class="form-row">
             <div class="form-group col-md-2 mb-0">
-                {{ form_data.motor|as_crispy_field }}
-            </div>
-            <div class="form-group col-md-2 mb-0">
                 {{ form_data.start_date|as_crispy_field }}
             </div>
             <div class="form-group col-md-2 mb-0">
                 {{ form_data.end_date|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-2 mb-0">
             </div>
         </div>
                <div class="form-row">
@@ -25,7 +24,7 @@
                 <input type="submit" value="Submit" class="btn btn-primary"/>
             </div>
             <div class="form-group col-md-2 mb-0">
-                <a href="{% url 'statsprint' %}" class="btn btn-primary" role="button" aria-pressed="true">Save/Print
+                <a href="{% url 'totalsprint' %}" class="btn btn-primary" role="button" aria-pressed="true">Save/Print
                 PDF</a>
             </div>
 
