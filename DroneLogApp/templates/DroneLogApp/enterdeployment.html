@@ -1,0 +1,127 @@
+{% extends "DroneLogApp/base.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Enter Stats
+{% endblock %}
+
+{% block content %}
+    <h3>Enter Deployment</h3>
+    <form method="post">
+        {% csrf_token %}
+        <div class="card bg-light">
+            <div class="card-body">
+                <p class="card-text">
+                <div class="form-row">
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.date|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.time|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.case_number_or_CH|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.pilot|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.observer|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="form-group col-md-4 mb-0">
+                        {{ form.location|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.airspace|as_crispy_field }}
+                    </div>
+
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.weather|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.wind|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4 mb-0">
+                        {{ form.FAA_Controlling_Agency|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.frequency_used|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.NOTAM_Filed|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-4 mb-0">
+                        {{ form.NOTAM_Record_Number|as_crispy_field }}
+                    </div>
+                </div>
+
+                </p>
+            </div>
+        </div>
+        <br>
+        <div class="card bg-light">
+            <div class="card-body">
+                <p class="card-text">
+                <div class="form-row">
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.drone_used|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.deployment_reason|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.number_of_flights_flown|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.total_flight_time|as_crispy_field }}
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.pre_flight_completed_by|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.post_flight_completed_by|as_crispy_field }}
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.video_recorded|as_crispy_field }}
+                    </div>
+                </div>
+                </p>
+            </div>
+        </div>
+        <br>
+
+        <div class="card bg-light">
+            <div class="card-body">
+                <p class="card-text">
+
+                    {{ form.synopsis_of_events|as_crispy_field }}
+
+
+                </p>
+            </div>
+        </div>
+        <br/>
+
+        <div class="form-row">
+            <div class="form-group col-md-2 mb-2">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+            <div>
+                <button class="btn btn-info" name="add_another">Submit/Add Another</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
