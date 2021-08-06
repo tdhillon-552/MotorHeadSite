@@ -1,9 +1,7 @@
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render
-
-# Create your views here.
+from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView, UpdateView
-
 from .models import Stats
 from .forms import StatsForm, UpdateStatsForm, SearchByMotor, SearchTotalsForm
 
@@ -26,6 +24,13 @@ class EnterStats(CreateView):
         form.instance.user = self.request.user
         return super(EnterStats, self).form_valid(form)
 
+    def get_success_url(self):
+        if 'add_another' in self.request.POST:
+            url = reverse_lazy('enterstats')
+        else:
+            url = reverse('detailstats', args=(self.object.id,))
+        return url
+
 
 class ListStats(ListView):
     paginate_by = 5
@@ -35,6 +40,11 @@ class ListStats(ListView):
 
     def get_queryset(self):
         return Stats.objects.filter(user=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super(ListStats, self).get_context_data(**kwargs)
+        context['calendarstats'] = Stats.objects.filter(user=self.request.user)
+        return context
 
 
 class DetailStats(DetailView):
